@@ -1,42 +1,41 @@
-const express = require('express')
-const app = express()
-const port = 5000
+const express = require('express');
+const app = express();
+const port = 5000;
 const neo4j = require('neo4j-driver');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-app.get("/", (req,res) => res.send("hello world"))
-app.listen(port, ()=>console.log(`app listening on ${port}`))
+const boltUrl = "neo4j+s://d7f68664.databases.neo4j.io";
+const password = 'IoGs126CsTNJPig5X3SuTYfIK0wCwkQC6bcflMK07aE';
+app.get("/", (req, res) => res.send(""));
+app.listen(port, () => { });
 
 const driver = new neo4j.driver(
-    'bolt://localhost',
+    boltUrl,
     neo4j.auth.basic(
         'neo4j',
-        'guest'
+        password
     ),
 );
 
-app.post("/createEmployee", (req,res) => {
+app.post("/createEmployee", (req, res) => {
 
     var session = driver.session();
 
     new Promise((resolve, reject) => {
         session.run(`CREATE (n:Person{name: '${req.body.params.name}', emp_id: ${req.body.params.id}}) return n`
         ).then(function (result) {
-            
             console.log("New employee created!")
-            res.send('111');
+            res.send('200');
         })
             .catch(function (err) {
-                console.log(err)
+                console.log(err);
             });
     })
-
-    // session.close()
 })
 
-app.get("/getAllEmployees", (req,res) => {
+app.get("/getAllEmployees", (req, res) => {
     var session = driver.session();
     ret = [];
 
@@ -50,10 +49,7 @@ app.get("/getAllEmployees", (req,res) => {
             res.json(JSON.stringify(ret));
         })
             .catch(function (err) {
-                console.log(err)
+                console.log(err);
             });
-    }) 
-    // session.close()
+    })
 })
-
-

@@ -12,30 +12,55 @@ var employeeID = null;
 
 function App() {
 
-  const [employees, setEmployees] = useState([])
+  const [employees, setEmployees] = useState([]);
+  const [tempText, setTempText] = useState("");
+  const [tempColor, setTempColor] = useState("");
+
+  function compare(a,b){
+    if (a.properties.emp_id.low > b.properties.emp_id.low){
+      return 1
+    }
+    if (a.properties.emp_id.low < b.properties.emp_id.low){
+      return -1
+    }
+    if (a.properties.name.toLowerCase() > b.properties.name.toLowerCase()){
+      return 1
+    }
+    if (b.properties.name.toLowerCase() > a.properties.name.toLowerCase()){
+      return -1
+    }
+      return 0
+  }
 
   function createEmployee() {
 
-    if (name === "" || employeeID == null) {
-      console.log("invalid input")
-      return
+    if (name === "" || employeeID == null || isNaN(employeeID) == true) {
+      console.log("invalid input");
+      setTempText("Invalid input");
+      setTempColor("red");
+      return;
     }
-    var params = { name: name, id: employeeID }
+    var params = { name: name, id: employeeID };
 
     console.log(name, employeeID)
     const res = axios.post('/createEmployee', {
       params: params
     }).then((msg) => {
       console.log(msg);
-      name = ""
-      employeeID = ""
+      name = "";
+      employeeID = "";
+      setTempText("Employee created!");
+      setTempColor("green");
     })
   }
 
   async function getEmployees() {
     const res = await axios.get('/getAllEmployees')
-    var temp = JSON.parse(res.data)
+    var temp = JSON.parse(res.data);
+    temp.sort(compare);
     setEmployees(temp);
+    setTempText("Employees received");
+    setTempColor("blue");
   }
 
   function renderItem(index, key) {
@@ -54,7 +79,7 @@ function App() {
           backgroundImage: 'url(' + require('./images/Background.jpg') + ')',
           backgroundSize: 'cover',
           height: '100vh',
-          width: '100%',
+          width: '100vw',
           opacity: '1'
         }}>
           <h1 style={{ color: "#2F4F4F", fontSize: "45px", margin: "20px" }}>Employee Portal</h1>
@@ -63,12 +88,14 @@ function App() {
             <Grid item xs={12}>
               <Grid container justify="center" spacing={2}>
                 <div class="ui left icon input" id="enterName">
-                  <input type="text" placeholder="Enter name" onChange={(val) => { name = val.target.value }}></input>
+                  <input type="text" placeholder="Enter name" onChange={(val) => { name = val.target.value;   setTempText("")
+; }}></input>
                   <i class="users icon"></i>
                 </div>
 
                 <div class="ui input" id="enterID">
-                  <input type="text" placeholder="Enter ID" onChange={(val) => { employeeID = parseInt(val.target.value) }}></input>
+                  <input type="text" placeholder="Enter ID" onChange={(val) => { employeeID = parseInt(val.target.value);   setTempText("")
+;}}></input>
                 </div>
               </Grid>
             </Grid>
@@ -97,6 +124,11 @@ function App() {
                   length={employees.length}
                   type='uniform'
                 />
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              <div style = {{color: tempColor}}>
+                {tempText} 
               </div>
             </Grid>
           </Grid>
