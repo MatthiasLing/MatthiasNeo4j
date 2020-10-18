@@ -12,7 +12,9 @@ var employeeID = null;
 
 function App() {
 
+  // List of employees to display
   const [employees, setEmployees] = useState([]);
+  //Current app state and color - for updates to user
   const [tempText, setTempText] = useState("");
   const [tempColor, setTempColor] = useState("");
 
@@ -31,7 +33,7 @@ function App() {
     }
     return 0
   }
-
+// Makes post request to API, sends name and id as params
   function createEmployee() {
 
     if (name === "" || employeeID == null || isNaN(employeeID) == true) {
@@ -54,6 +56,7 @@ function App() {
     })
   }
 
+  // Makes get request to API, awaits the list of employees
   async function getEmployees() {
     const res = await axios.get('/getAllEmployees')
     var temp = JSON.parse(res.data);
@@ -63,6 +66,7 @@ function App() {
     setTempColor("#4888AD");
   }
 
+  //Returns a div to display in the list format within the list
   function renderItem(index, key) {
     return (<div key={key} style={{ color: "black" }}>
       <div class="ui animated button" style={{ width: "400px", height: "55px", backgroundColor: "#DCDCDC", margin: "2px" }}>
@@ -89,16 +93,14 @@ function App() {
               <Grid container justify="center" spacing={2}>
                 <div class="ui left icon input" id="enterName">
                   <input type="text" placeholder="Enter name" onChange={(val) => {
-                    name = val.target.value; setTempText("")
-                      ;
+                    name = val.target.value; setTempText("");
                   }}></input>
                   <i class="users icon"></i>
                 </div>
 
                 <div class="ui input" id="enterID">
                   <input type="text" placeholder="Enter ID" onChange={(val) => {
-                    employeeID = parseInt(val.target.value); setTempText("")
-                      ;
+                    employeeID = parseInt(val.target.value); setTempText("");
                   }}></input>
                 </div>
               </Grid>
@@ -115,13 +117,11 @@ function App() {
                 <button class="ui secondary button" onClick={() => { getEmployees() }}
                   style={{ width: "150px", height: "60px" }}>
                   Get All Records
-          </button>
+                </button>
               </Grid>
             </Grid>
             <Grid item xs={12}>
 
-
-              {/* {employees} */}
               <div style={{ overflow: 'auto', maxHeight: 400 }}>
                 <ReactList
                   itemRenderer={renderItem}
