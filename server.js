@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express');
 const app = express();
 const port = process.env.port || 3000
-const neo4j = require('neo4j-driver');
+// const neo4j = require('neo4j-driver');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
@@ -17,45 +17,45 @@ app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.get("/", (req, res) => res.send("Express running"));
 app.listen(port, () => { });
 
-const driver = new neo4j.driver(
-    boltUrl,
-    neo4j.auth.basic(
-        'neo4j',
-        password
-    ),
-);
+// const driver = new neo4j.driver(
+//     boltUrl,
+//     neo4j.auth.basic(
+//         'neo4j',
+//         password
+//     ),
+// );
 
 app.post("/createEmployee", (req, res) => {
 
-    var session = driver.session();
+    // var session = driver.session();
 
-    new Promise((resolve, reject) => {
-        session.run(`CREATE (n:Person{name: '${req.body.params.name}', emp_id: ${req.body.params.id}}) return n`
-        ).then(function (result) {
-            console.log("New employee created!")
-            res.send('200');
-        })
-            .catch(function (err) {
-                console.log(err);
-            });
-    })
+    // new Promise((resolve, reject) => {
+    //     session.run(`CREATE (n:Person{name: '${req.body.params.name}', emp_id: ${req.body.params.id}}) return n`
+    //     ).then(function (result) {
+    //         console.log("New employee created!")
+    //         res.send('200');
+    //     })
+    //         .catch(function (err) {
+    //             console.log(err);
+    //         });
+    // })
 })
 
 app.get("/getAllEmployees", (req, res) => {
-    var session = driver.session();
-    ret = [];
+    // var session = driver.session();
+    // ret = [];
 
-    new Promise((resolve, reject) => {
-        session.run(`MATCH (n) return n`
-        ).then(function (result) {
-            result.records.forEach(element => {
-                console.log(element._fields[0])
-                ret.push(element._fields[0])
-            });
-            res.json(JSON.stringify(ret));
-        })
-            .catch(function (err) {
-                console.log(err);
-            });
-    })
+    // new Promise((resolve, reject) => {
+    //     session.run(`MATCH (n) return n`
+    //     ).then(function (result) {
+    //         result.records.forEach(element => {
+    //             console.log(element._fields[0])
+    //             ret.push(element._fields[0])
+    //         });
+    //         res.json(JSON.stringify(ret));
+    //     })
+    //         .catch(function (err) {
+    //             console.log(err);
+    //         });
+    // })
 })
