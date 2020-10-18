@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.port || 3000;
 
 const neo4j = require('neo4j-driver');
 
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const boltUrl = "neo4j+s://d7f68664.databases.neo4j.io";
 const password = 'IoGs126CsTNJPig5X3SuTYfIK0wCwkQC6bcflMK07aE';
 app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.get("/", (req, res) => res.send(""));
+app.get("/", (req, res) => res.send("Express running"));
 app.listen(port, () => {});
 const driver = new neo4j.driver(boltUrl, neo4j.auth.basic('neo4j', password));
 app.post("/createEmployee", (req, res) => {
