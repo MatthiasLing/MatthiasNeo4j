@@ -21,9 +21,5 @@
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "nodemon": "^2.0.5"
-  },
-  "engines": {
-    "node": "v12.18.3",
-    "npm": ">=6.0.0"
   }
 }
