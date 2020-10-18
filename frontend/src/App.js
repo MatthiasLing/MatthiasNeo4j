@@ -16,20 +16,20 @@ function App() {
   const [tempText, setTempText] = useState("");
   const [tempColor, setTempColor] = useState("");
 
-  function compare(a,b){
-    if (a.properties.emp_id.low > b.properties.emp_id.low){
+  function compare(a, b) {
+    if (a.properties.emp_id.low > b.properties.emp_id.low) {
       return 1
     }
-    if (a.properties.emp_id.low < b.properties.emp_id.low){
+    if (a.properties.emp_id.low < b.properties.emp_id.low) {
       return -1
     }
-    if (a.properties.name.toLowerCase() > b.properties.name.toLowerCase()){
+    if (a.properties.name.toLowerCase() > b.properties.name.toLowerCase()) {
       return 1
     }
-    if (b.properties.name.toLowerCase() > a.properties.name.toLowerCase()){
+    if (b.properties.name.toLowerCase() > a.properties.name.toLowerCase()) {
       return -1
     }
-      return 0
+    return 0
   }
 
   function createEmployee() {
@@ -60,7 +60,7 @@ function App() {
     temp.sort(compare);
     setEmployees(temp);
     setTempText("Employees received");
-    setTempColor("blue");
+    setTempColor("#4888AD");
   }
 
   function renderItem(index, key) {
@@ -88,14 +88,18 @@ function App() {
             <Grid item xs={12}>
               <Grid container justify="center" spacing={2}>
                 <div class="ui left icon input" id="enterName">
-                  <input type="text" placeholder="Enter name" onChange={(val) => { name = val.target.value;   setTempText("")
-; }}></input>
+                  <input type="text" placeholder="Enter name" onChange={(val) => {
+                    name = val.target.value; setTempText("")
+                      ;
+                  }}></input>
                   <i class="users icon"></i>
                 </div>
 
                 <div class="ui input" id="enterID">
-                  <input type="text" placeholder="Enter ID" onChange={(val) => { employeeID = parseInt(val.target.value);   setTempText("")
-;}}></input>
+                  <input type="text" placeholder="Enter ID" onChange={(val) => {
+                    employeeID = parseInt(val.target.value); setTempText("")
+                      ;
+                  }}></input>
                 </div>
               </Grid>
             </Grid>
@@ -127,8 +131,8 @@ function App() {
               </div>
             </Grid>
             <Grid item xs={12}>
-              <div style = {{color: tempColor}}>
-                {tempText} 
+              <div style={{ color: tempColor }}>
+                {tempText}
               </div>
             </Grid>
           </Grid>
