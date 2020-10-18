@@ -1,0 +1,19 @@
+{
+  "name": "matthias_neo4j",
+  "version": "1.0.0",
+  "description": "Neo4j consulting engineer assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthiasLing/Matthias_Neo4j.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthiasLing/Matthias_Neo4j/issues"
+  },
+  "homepage": "https://github.com/MatthiasLing/Matthias_Neo4j#readme"
+}
