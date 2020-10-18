@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.port || 5000
 const neo4j = require('neo4j-driver');
 const bodyParser = require('body-parser');
 
