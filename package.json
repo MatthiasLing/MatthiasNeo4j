@@ -1,23 +1,28 @@
 {
-  "name": "matthias_neo4j",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Neo4j consulting engineer assignment",
-  "main": "index.js",
+  "description": "",
+  "main": "neo4j.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MatthiasLing/Matthias_Neo4j.git"
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "nodemon": "^2.0.5"
   },
   "engines": {
     "node": ">=12.0.0",
     "npm": ">=6.0.0"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MatthiasLing/Matthias_Neo4j/issues"
-  },
-  "homepage": "https://github.com/MatthiasLing/Matthias_Neo4j#readme"
+  }
 }
