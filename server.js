@@ -14,7 +14,7 @@ const password = 'IoGs126CsTNJPig5X3SuTYfIK0wCwkQC6bcflMK07aE';
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 
-app.get("/", (req, res) => res.send(""));
+app.get("/", (req, res) => res.send("Express running"));
 app.listen(port, () => { });
 
 const driver = new neo4j.driver(
