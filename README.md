@@ -29,10 +29,8 @@ Locally:
   - install dependencies:
     ```npm install```
   - You can run the API normally now
-     In backend:
-    ```nodemon neo4j.js```
-     In frontend:
-     ```npm run start```
+    ```npm run start```
+    
     
     
 Thanks for the great assignment!
