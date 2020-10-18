@@ -26,7 +26,13 @@ Locally:
   - Create local database in Neo4j browser, start it 
   - change boltUrl field in neo4j.js to localhost url
   - change password field to database password 
+  - install dependencies:
+    ```npm install```
   - You can run the API normally now
+     In backend:
+    ```nodemon neo4j.js```
+     In frontend:
+     ```npm run start```
     
     
 Thanks for the great assignment!
