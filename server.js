@@ -1,5 +1,6 @@
-const app = express();
 const express = require('express');
+const app = express();
+
 const neo4j = require('neo4j-driver');
 const bodyParser = require('body-parser');
 const path = require('path')
