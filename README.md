@@ -16,7 +16,7 @@ React frontend connected with Node.js/Express backend, communicates with Neo4j d
 This project can be run from a URL or locally with modifications.
 
 Generally: 
-  - Go to url at ______, you can start entering and pulling data right away, no further instructions needed
+  - Go to url at http://neo4j.eba-xdakrsum.us-east-2.elasticbeanstalk.com, you can start entering and pulling data right away, no further instructions needed
   - Database endpoint: neo4j+s://d7f68664.databases.neo4j.io
   - Database user: neo4j
   - Database pw: IoGs126CsTNJPig5X3SuTYfIK0wCwkQC6bcflMK07aE
