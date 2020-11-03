@@ -25,7 +25,7 @@ const driver = new neo4j.driver(
     ),
 );
 
-// API endpoint to create a new employee with diven name and id
+// API endpoint to create a new employee with given name and id
 app.post("/createEmployee", (req, res) => {
 
     var session = driver.session();
